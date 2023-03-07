@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summaries of the doc</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+	<h1 class="center">High-Resolution Image Reconstruction with Latent Diffusion Models from Human Brain Activity</h1>
+	
+		<h2>Page 1</h2>
+		<p>This paper proposes a new method based on a latent diffusion model (LDM) to reconstruct high-resolution images from human brain activity obtained via functional magnetic resonance imaging (fMRI). The model reduces the computational cost of diffusion models, while preserving their high generative performance. The authors also characterize the inner mechanisms of the LDM by studying how its different components (such as the latent vector of image Z, conditioning inputs C, and different elements of the denoising U-Net) relate to distinct brain functions. The proposed method can reconstruct high-resolution images with high fidelity in a straightforward fashion, without the need for additional training and fine-tuning of complex deep-learning models. The paper provides a quantitative interpretation of different LDM components from a neuroscientific perspective.</p>
+	
+		<h2>Page 2</h2>
+		<p>This paper explores the use of a deep generative model called Stable Diffusion to reconstruct visual images from fMRI signals. It shows that the model can reconstruct high-resolution (512x512) images with high semantic fidelity without any training or fine-tuning of complex deep learning models. The paper also provides biological interpretations of each component of the model, including forward/reverse diffusion processes, U-Net, and latent representations with different noise levels.</p>
+	
+		<h2>Page 3</h2>
+		<p>This page describes methods used to analyze the relationship between deep-learning models (DMs) and the brain. It outlines the Natural Scenes Dataset (NSD) which was used for this project, and provides an overview of the methods. These methods include an analysis of the latent representations of the presented image and associated text, a decoding analysis which decodes latent representations of the image and text from fMRI signals within early and higher visual cortices, and an encoding analysis which builds models to predict fMRI signals from different components of the model.</p>
+	
+		<h2>Page 4</h2>
+		<p>This study used Latent Diffusion Models (LDMs) to reconstruct images from fMRI signals within early and higher (ventral) visual cortex. An autoencoder was used to compress the input and a U-Net architecture was used to refer to conditional inputs via cross-attention. The model was trained on a large dataset and can generate and modify images based on text input. The accuracy of image reconstruction was evaluated objectively (perceptual similarity metrics) and subjectively (human raters) by assessing whether the original test images could be identified from the generated images. Linear models were constructed to map fMRI signals to each LDM component and no training or fine-tuning of deep-learning models was needed.</p>
+	
+		<h2>Page 5</h2>
+		<p>This page discusses a study that was conducted to interpret the internal operations of latent Dirichlet allocation (LDM) models by mapping them to brain activity. To do this, four settings were constructed to predict voxel activity from three latent representations of the LDM independently. Each setting was evaluated using Pearson's correlation coefficients between predicted and measured fMRI signals and statistical significance was measured by comparing the estimated correlations to the null distribution of correlations between two independent Gaussian random vectors of the same length. Results showed that images reconstructed using only z were visually consistent with the original images, but failed to capture their semantic content, while images reconstructed using only c generated images with high semantic fidelity but were visually inconsistent. Images reconstructed using zc could generate high-resolution images with high semantic fidelity. The results were stable and accurate across subjects.</p>
+	
+		<h2>Page 6</h2>
+		<p>This figure shows the accuracy of an encoding model for three types of latent representations associated with a Latent Dirichlet Model: z, a latent representation of the original image; c, a latent representation of image text annotation; and zc, a noise-added latent representation of zafter reverse diffusion process with cross-attention to c. Results showed that zproduced high prediction performance in the posterior part of visual cortex, namely early visual cortex. cproduced the highest prediction performance in higher visual cortex, and zccarries a representation that is very similar to z, showing high prediction performance for early visual cortex.</p>
+	
+		<h2>Page 7</h2>
+		<p>This page presents the results of a study conducted to compare the prediction performance of a voxel-wise encoding model applied to held-out test images in a single subject. The results showed that when a small amount of noise was added, the original images predicted voxel activity better than the noise-added latent representation across cortex. However, when the level of noise was increased, the noise-added latent representation predicted voxel activity within higher visual cortex better than the original images, indicating that the semantic content of the image was gradually emphasized. The study also showed that during the early stages of the denoising process, the original images signals dominated prediction of fMRI signals, while during the middle step of the denoising process, the noise-added latent representation predicted activity within higher visual cortex much better than the original images. This result shows how the latent variable denoising model refines and generates images from noise. The copyright holder for this preprint is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.</p>
+	
+		<h2>Page 8</h2>
+		<p>This study proposes a novel visual reconstruction method using latent dynamic models (LDMs) to reconstruct high-resolution images from human brain activity. Results show that the method does not require training or fine-tuning of complex deep-learning models, only requiring simple linear mappings from fMRI to latent representations within LDMs. Additionally, the study provides a quantitative interpretation for the internal components of the LDM by building encoding models. Results demonstrate the emergence of semantic content throughout the inverse diffusion process, layer-wise characterization of U-Net, and a quantitative interpretation of image-to-image transformations with different noise levels.</p>
+	
+		<h2>Page 9</h2>
+		<p>This page discusses various research projects related to the convergence of cognitive neuroscience and artificial intelligence. It details projects that involve reconstructing images from brain activity, understanding natural language processing, and decoding the semantic content of natural movies. It also explains how denoising diffusion probabilistic models, deep neural networks, and feature-space selection with banded ridge regression can be used to improve image synthesis, capture the complexity of neural representations, and reconstruct complex images from brain activities, respectively.</p>
+	
+		<h2>Page 10</h2>
+		<p>This page presents a collection of research papers that explore the use of multiscale local image decoders to decode natural scenes from fMRI patterns, quantify the organization of diverse cognitive functions in the brain, reconstruct visual experiences from brain activity, decode naturalistic experiences from brain activity, reconstruct seen images from brain activity, high-resolution image synthesis with latent diffusion models, natural image reconstruction from fMRI using deep learning, image-to-image diffusion models, image super-resolution via iterative refinement, unpaired image translation with denoising diffusion probabilistic models, predicting speech from a cortical hierarchy of event-based time scales, the neural architecture of language, generative adversarial networks for reconstructing natural images from brain activity, deep image reconstruction from human brain activity, end-to-end deep image reconstruction from human brain activity, generative modeling by estimating gradients of the data distribution, deep unsupervised learning using nonequilibrium thermodynamics, score-based generative modeling through stochastic differential equations, rethinking the inception architecture for computer vision, and a common brain network among state, trait, and pathological anxiety from whole-brain functional connectivity. The copyright holder for this preprint is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.</p>
+	
+		<h2>Page 11</h2>
+		<p>This page contains three references to research papers. The first paper by Pascal Vincent discusses a connection between score matching and denoising autoencoders. The second paper by Haiguang Wen et al focuses on neural encoding and decoding with deep learning for dynamic natural vision. The third paper by Daniel LK Yamins et al explores performance-optimized hierarchical models to predict neural responses in higher visual cortex. All three papers are licensed under CC-BY 4.0 International license.</p>
+	
+</body>
+</html>

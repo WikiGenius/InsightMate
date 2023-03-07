@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summaries of the doc</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+	<h1 class="center">{{ page_title }}</h1>
+	{% for page_idx, summary in summaries.items() %}
+		<h2>Page {{ page_idx + 1 }}</h2>
+		<p>{{ summary }}</p>
+	{% endfor %}
+</body>
+</html>
