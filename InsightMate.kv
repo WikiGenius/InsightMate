@@ -1,0 +1,47 @@
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 20, 10, 10]
+        spacing: 10
+
+        MDTextField:
+            id: file_path
+            mode: "round"
+            hint_text: "Choose a file"
+            icon_left: "file-document-outline"
+            readonly: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 10
+            size_hint_y: None
+            height: 50
+
+            MDIconButton:
+                icon: "upload"
+                on_release: app.file_uploader.open()
+
+            MDRectangleFlatButton:
+                text: 'Summarize Document'
+                on_release: app.summarize_document()
+
+            MDRectangleFlatButton:
+                text: 'Summarize Pages'
+                on_release: app.summarize_pages()
+
+        MDProgressBar:
+            id: progress
+            value: 0
+            max: 100
+            size_hint_y: None
+            height: 10
+
+        ScrollView:
+            MDLabel:
+                id: summary
+                text: ''
+                font_size: '16sp'
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                markup: True
