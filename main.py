@@ -21,19 +21,20 @@ class InsightMateApp(MDApp):
 
     
     def summarize_document(self):
-        if self.summaries is not None:
-            self.summary_doc = get_summary_doc(self.summaries)
-            generate_report_summary_doc(self.title_paper, self.summary_doc)
-            self.progress_percent = 100  # set progress percentage to 100 when done
-        self.screen.progress.value = self.progress_percent  # update progress bar
+        print(self.selection)
+        # if self.summaries is not None:
+            # self.summary_doc = get_summary_doc(self.summaries)
+            # generate_report_summary_doc(self.title_paper, self.summary_doc)
+            # self.progress_percent = 100  # set progress percentage to 100 when done
+        # self.screen.progress.value = self.progress_percent  # update progress bar
 
     def summarize_pages(self):
         print(self.selection)
-        if self.doc_path is not None:
-            self.summaries = get_summaries(doc_path = self.doc_path )
-            generate_report_summaries(self.title_paper, self.summaries)
-            self.progress_percent = 100  # set progress percentage to 100 when done
-        self.screen.progress.value = self.progress_percent  # update progress bar
+        # if self.doc_path is not None:
+            # self.summaries = get_summaries(doc_path = self.doc_path )
+            # generate_report_summaries(self.title_paper, self.summaries)
+            # self.progress_percent = 100  # set progress percentage to 100 when done
+        # self.screen.progress.value = self.progress_percent  # update progress bar
         
     def choose(self):
         '''
