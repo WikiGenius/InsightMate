@@ -1,26 +1,14 @@
 import os
-from kivy.lang import Builder
-from kivymd.app import MDApp
-from kivy.properties import ObjectProperty
-from kivy.uix.filechooser import FileChooserIconView
-from kivy.uix.screenmanager import Screen
-from plyer import filechooser
-from kivy.properties import ListProperty
-
-# Define the main widget for the app
-
-Builder.load_file('InsightMate.kv')
-
-class MainScreen(Screen):
-    pass       
-
+from utils.layout import *  
+from utils import get_summaries, get_summary_doc, generate_report_summaries, generate_report_summary_doc, get_title_paper
         
 class InsightMateApp(MDApp):
     selection = ListProperty([])
+    
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.doc_path = None
-        
+        self.summaries = None
     def build(self):
         self.theme_cls.primary_palette = "Blue"
         self.theme_cls.theme_style = "Dark"
@@ -29,22 +17,17 @@ class InsightMateApp(MDApp):
 
         return self.screen
 
-
-    def file_selected(self, selection):
-        self.file_path.text = selection[0]
-        self.file_chooser.path = os.path.dirname(selection[0])
-
     
     def summarize_document(self):
         # TODO: Add logic to summarize the entire document
-        print(self.doc_path )
-        pass
-    
+        if self.summaries is not None:
+            self.summary_doc = get_summary_doc(self.summaries)
+            generate_report_summary_doc(self.title_paper, self.summary_doc)
     def summarize_pages(self):
         # TODO: Add logic to summarize each page of the document
-        print(self.doc_path )
-        
-        pass
+        if self.doc_path is not None:
+            self.summaries = get_summaries(doc_path = self.doc_path )
+            generate_report_summaries(self.title_paper, self.summaries)
     
     def choose(self):
         '''
@@ -67,6 +50,7 @@ class InsightMateApp(MDApp):
         via FileChoose.handle_selection.
         '''
         self.doc_path = self.selection[0]
-
+        self.screen.file_path.text = self.doc_path
+        self.title_paper = get_title_paper(doc_path = self.doc_path, debug=False)
         
 InsightMateApp().run()
