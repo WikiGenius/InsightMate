@@ -1,6 +1,11 @@
 from utils.layout import *  
 from utils import get_summaries, get_summary_doc, generate_report_summaries, generate_report_summary_doc, get_title_paper
-        
+import time       
+
+# TODO
+# 1. Fix update the progress bar
+# 2. Fix calc sumary doc once 
+ 
 class InsightMateApp(MDApp):
     selection = ListProperty([])
     
@@ -9,7 +14,7 @@ class InsightMateApp(MDApp):
         self.doc_path = None
         self.summaries = None
         self.progress_percent = 0  # initialize progress percentage to 0
-
+        self.selected_file = False
         
     def build(self):
         self.theme_cls.primary_palette = "Blue"
@@ -20,21 +25,37 @@ class InsightMateApp(MDApp):
         return self.screen
 
     
-    def summarize_document(self):
-        print(self.selection)
-        # if self.summaries is not None:
-            # self.summary_doc = get_summary_doc(self.summaries)
-            # generate_report_summary_doc(self.title_paper, self.summary_doc)
-            # self.progress_percent = 100  # set progress percentage to 100 when done
-        # self.screen.progress.value = self.progress_percent  # update progress bar
-
     def summarize_pages(self):
-        print(self.selection)
-        # if self.doc_path is not None:
-            # self.summaries = get_summaries(doc_path = self.doc_path )
-            # generate_report_summaries(self.title_paper, self.summaries)
-            # self.progress_percent = 100  # set progress percentage to 100 when done
-        # self.screen.progress.value = self.progress_percent  # update progress bar
+        if self.selected_file:
+            self.screen.progress.value = 0  # update progress bar
+            
+            self.summaries = dict()
+            generator = get_summaries(doc_path = self.doc_path)
+            # Loop through the generator object and print the values
+            while True:
+                try:
+                    page_number, summary, number_of_pages = next(generator)
+                    print(f"Page number: {page_number}")
+                    print(f"Number of pages: {number_of_pages}")
+                    self.summaries[page_number] = summary
+                    self.screen.progress.value = int(round((page_number + 1) / (number_of_pages) * 100))  # update progress bar
+                    print(f"self.screen.progress.value : {self.screen.progress.value }")
+
+                except StopIteration:
+                    # Stop the loop when the generator is exhausted
+                    break
+            self.selected_file = False
+            generate_report_summaries(self.title_paper, self.summaries)
+            
+    def summarize_document(self):
+        if self.summaries is not None:
+            self.screen.progress.value = 0  # update progress bar
+            self.summary_doc = get_summary_doc(self.summaries)
+            generate_report_summary_doc(self.title_paper, self.summary_doc)
+            self.selected_file = False
+            self.screen.progress.value = 100  # update progress bar
+
+            
         
     def choose(self):
         '''
@@ -56,6 +77,7 @@ class InsightMateApp(MDApp):
         Update TextInput.text after FileChoose.selection is changed
         via FileChoose.handle_selection.
         '''
+        self.selected_file = True
         self.doc_path = self.selection[0]
         self.screen.file_path.text = self.doc_path
         self.title_paper = get_title_paper(doc_path = self.doc_path, debug=False)

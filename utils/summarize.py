@@ -47,12 +47,10 @@ def summarize_page(page_text, debug=False):
     
 def get_summaries(doc_path = 'docs/2022.11.18.517004v2.full.pdf'):
     info_doc = extract_pages(doc_path)
-    summaries = dict()
     number_of_pages = info_doc['number_of_pages'] 
     for page_number in tqdm(range(number_of_pages), desc = "Summarize the pages"):
         page_text = info_doc['pages'][page_number]
-        summaries[page_number] = summarize_page(page_text)
-    return summaries
+        yield page_number, summarize_page(page_text), info_doc['number_of_pages'] 
 
 def get_summary_doc(summaries, debug=False):
     while True:
