@@ -4,7 +4,7 @@ import time
 
 # TODO
 # 1. Fix update the progress bar
-# 2. Fix calc sumary doc once 
+# 2. Fix calc summary doc once 
  
 class InsightMateApp(MDApp):
     selection = ListProperty([])
@@ -15,7 +15,7 @@ class InsightMateApp(MDApp):
         self.summaries = None
         self.progress_percent = 0  # initialize progress percentage to 0
         self.selected_file = False
-        
+        self.calculated_summaries = False
     def build(self):
         self.theme_cls.primary_palette = "Blue"
         self.theme_cls.theme_style = "Dark"
@@ -45,14 +45,15 @@ class InsightMateApp(MDApp):
                     # Stop the loop when the generator is exhausted
                     break
             self.selected_file = False
+            self.calculated_summaries = True
             generate_report_summaries(self.title_paper, self.summaries)
             
     def summarize_document(self):
-        if self.summaries is not None:
+        if self.calculated_summaries:
             self.screen.progress.value = 0  # update progress bar
             self.summary_doc = get_summary_doc(self.summaries)
             generate_report_summary_doc(self.title_paper, self.summary_doc)
-            self.selected_file = False
+            self.calculated_summaries = False
             self.screen.progress.value = 100  # update progress bar
 
             
