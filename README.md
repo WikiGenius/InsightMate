@@ -2,6 +2,8 @@
 
 InsightMate is a powerful app that helps you manage your documents more efficiently. With InsightMate, you can extract valuable insights from your documents, save time, and boost your productivity. Our unique combination of advanced machine learning algorithms and intuitive user interfaces makes it easy to analyze, categorize, and summarize your documents with just a few clicks.
 
+<img src="assets/InsightMate.png" alt="InsightMate App" width="800">
+
 ## Features
 
 - **Summarization:** Quickly summarize lengthy documents into short summaries with the click of a button.
