@@ -4,7 +4,6 @@ import time
 
 # TODO
 # 1. Fix update the progress bar
-# 2. Fix calc summary doc once 
  
 class InsightMateApp(MDApp):
     selection = ListProperty([])
